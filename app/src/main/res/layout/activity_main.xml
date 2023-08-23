@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginTop="15dp"
+        android:paddingStart="15dp"
+        android:layout_marginBottom="0dp"
+        android:text="DiningApp"
+        android:textSize="40sp"
+        tools:ignore="RtlSymmetry" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/signInView"
+        android:name="com.example.test.fragment.login.SignInFragment"
+        android:layout_width="match_parent"
+        android:layout_height="496dp" />
+
+    <View
+        android:background="#80000000"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        />
+
+    <TextView
+        android:id="@+id/createrText"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="end"
+        android:paddingEnd="10dp"
+        android:text="coding by 현수" />
+
+</LinearLayout>
