@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.test.DBhelper.toyClient
+import com.example.test.helper.toyClient
 import com.example.test.adapter.diningAdapter
 import com.example.test.databinding.FragmentDiningBinding
 import com.example.test.model.DiningData

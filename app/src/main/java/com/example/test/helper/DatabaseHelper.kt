@@ -1,4 +1,4 @@
-package com.example.test.DBhelper
+package com.example.test.helper
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
