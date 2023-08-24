@@ -31,11 +31,6 @@ import retrofit2.Response
 import android.content.Context
 import com.example.test.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class SignInFragment : Fragment() {
     private lateinit var binding : FragmentSignInBinding
     private lateinit var auth: FirebaseAuth
@@ -64,7 +59,7 @@ class SignInFragment : Fragment() {
 
     }
     private fun googleInit() {
-        val default_web_client_id = "494374652274-1shvrn7ufq46t45j2bchbkrjiq8ru3qt.apps.googleusercontent.com"
+        val default_web_client_id = R.string.google_client_id.toString()
 //            getString(R.string.google_client_id); // Android id X
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -158,7 +153,7 @@ class SignInFragment : Fragment() {
 //                        Log.d(TAG, "Response: $newData")
 //                    }
                     Log.d(TAG, "Response: ${response.body()?.result}")
-                    val customToken = response.body()?.result
+//                    val customToken = response.body()?.result
                     // 얻은 토큰을 어디엔가에다 저장 후 백엔드 요청 시마다 함께 보내도록 함
                     // 로그인도 이 토큰을 기준으로 진행
                     // 받은 토큰이 성공적인 응답에서 온 것인지 확인 필요

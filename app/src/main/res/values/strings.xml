@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Test</string>
-    <string name="google_client_id">494374652274-1shvrn7ufq46t45j2bchbkrjiq8ru3qt.apps.googleusercontent.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="loginData">"loginPrefs"</string>
     <!-- Strings related to login -->
