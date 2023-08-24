@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-/app/src/main/res/values/google_client_id
+/app/src/main/res/values/google_client_id.xml

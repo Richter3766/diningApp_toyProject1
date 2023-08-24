@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.test.DBhelper.toyClient
 import com.example.test.adapter.diningAdapter
 import com.example.test.databinding.FragmentDiningBinding
@@ -84,24 +83,6 @@ class DiningFragment : Fragment() {
         binding.RecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = diningAdapter
-
-//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                    super.onScrolled(recyclerView, dx, dy)
-//                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-//                    val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-//                    val totalItemCount = layoutManager.itemCount
-//
-//                    if (!isFetchingData && lastVisibleItemPosition == totalItemCount - 1) {
-//                        // Load more data when reaching the last item
-//                        fetchDataRunnable.run()
-//                    }
-////                    if (!recyclerView.canScrollVertically(1) && !isFetchingData) {
-////                        page++
-////                        fetchData(page)
-////                    }
-//                }
-//            })
         }
     }
 }
