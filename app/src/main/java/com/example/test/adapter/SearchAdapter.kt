@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.databinding.DiningItemBinding
 import com.example.test.model.DiningData
 
-class SearchAdapter(var datas: ArrayList<DiningData>): RecyclerView.Adapter<SearchAdapter.ViewHolder>(), Filterable {
+class SearchAdapter(var datas: ArrayList<DiningData>, var con: Context): RecyclerView.Adapter<SearchAdapter.ViewHolder>(), Filterable {
     var filteredDining = ArrayList<DiningData>()
     var itemFilter = ItemFilter()
 
