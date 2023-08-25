@@ -5,10 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.test.helper.toyClient
-import com.example.test.adapter.diningAdapter
+import com.example.test.adapter.DiningAdapter
+import com.example.test.adapter.SearchAdapter
 import com.example.test.databinding.FragmentDiningBinding
 import com.example.test.model.DiningData
 import com.example.test.services.DBService
@@ -18,7 +20,8 @@ import retrofit2.Response
 
 class DiningFragment : Fragment() {
     private lateinit var binding:FragmentDiningBinding
-    private lateinit var diningAdapter: diningAdapter
+    private lateinit var diningAdapter: DiningAdapter
+    private lateinit var searchAdapter: SearchAdapter
     private var page = 1
     private var isFetchingData = false
 
@@ -28,9 +31,10 @@ class DiningFragment : Fragment() {
     ): View {
         binding = FragmentDiningBinding.inflate(layoutInflater)
 
-        diningAdapter = diningAdapter()
+        val searchViewText = binding.searchViewText
+        searchViewText.setOnQueryTextListener(searchViewTextListener)
 
-        applyRecyclerView()
+        diningAdapter = DiningAdapter()
 
         return binding.root
     }
@@ -58,6 +62,9 @@ class DiningFragment : Fragment() {
                         diningAdapter.apply {
                             if (page == 1) {
                                 setList(newData)
+//                                filter(binding.searchViewText.query.toString())
+                                applyRecyclerView(getList())
+
                             } else {
                                 val curList = getList()
                                 curList.addAll(newData)
@@ -79,10 +86,34 @@ class DiningFragment : Fragment() {
         })
     }
 
-    private fun applyRecyclerView(){
+    private fun applyRecyclerView(filteredList:ArrayList<DiningData>){
         binding.RecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = diningAdapter
+            searchAdapter = SearchAdapter(filteredList, requireActivity())
+            adapter = searchAdapter
         }
     }
+
+    companion object{
+        const val TAG = "DiningFragment"
+
+    }
+
+    private val searchViewTextListener: SearchView.OnQueryTextListener =
+        object : SearchView.OnQueryTextListener {
+            //검색버튼 입력시 호출, 검색버튼이 없으므로 사용하지 않음
+            override fun onQueryTextSubmit(s: String): Boolean {
+                return false
+            }
+
+            //텍스트 입력/수정시에 호출
+            override fun onQueryTextChange(newText: String): Boolean {
+                newText?.let {searchQuery ->
+                    val filteredList = diningAdapter.filter(searchQuery)
+                    applyRecyclerView(filteredList)
+                    Log.d(TAG, "SearchView Text is changed: $searchQuery")
+                }
+                return true
+            }
+        }
 }

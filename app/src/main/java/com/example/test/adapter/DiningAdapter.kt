@@ -9,7 +9,7 @@ import com.example.test.databinding.ItemLoadingBinding
 import com.example.test.model.DiningData
 
 
-class diningAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DiningAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
     private val items = ArrayList<DiningData>()
@@ -77,6 +77,18 @@ class diningAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun getList(): ArrayList<DiningData> {
         return items
+    }
+
+    fun filter(query: String): ArrayList<DiningData> {
+        val filteredList = ArrayList<DiningData>()
+
+        for (item in items) { // originalList는 모든 데이터를 보유한 리스트로 설정해야 합니다.
+            if (item.name.contains(query, true)) { // 검색어를 포함한 데이터만 필터링
+                filteredList.add(item)
+            }
+        }
+
+        return filteredList
     }
 
 }
